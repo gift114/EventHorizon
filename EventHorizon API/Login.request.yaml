@@ -1,0 +1,22 @@
+$kind: http-request
+description: On success, the JWT is automatically saved into the {{authToken}} collection variable for use by the Get Profile request.
+url: "{{baseUrl}}/api/auth/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "email": "ada@example.com",
+      "password": "password123"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const res = pm.response.json();
+      if (res && res.data && res.data.token) {
+          pm.collectionVariables.set('authToken', res.data.token);
+      }
+    language: text/javascript
+order: 4000

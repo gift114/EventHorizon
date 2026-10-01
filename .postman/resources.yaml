@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: ac6216f4-2ad9-43b5-855e-6c88701be901
+
+localResources:
+  collections:
+    - ../EventHorizon API

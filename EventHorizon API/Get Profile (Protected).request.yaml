@@ -1,0 +1,7 @@
+$kind: http-request
+description: Requires a valid JWT from a verified user. {{authToken}} is auto-filled after a successful Login request.
+url: "{{baseUrl}}/api/user/profile"
+method: GET
+headers:
+  Authorization: Bearer {{authToken}}
+order: 5000

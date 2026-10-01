@@ -1,0 +1,7 @@
+$kind: http-request
+description: Paste the raw token from the verification email's link (the part after ?token=) into the {{verificationToken}} variable, or replace it directly in this URL.
+url: "{{baseUrl}}/api/auth/verify-email?token={{verificationToken}}"
+method: GET
+queryParams:
+  token: "{{verificationToken}}"
+order: 3000

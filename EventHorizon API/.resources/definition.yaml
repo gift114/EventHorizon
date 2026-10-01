@@ -1,0 +1,6 @@
+$kind: collection
+description: "Auth foundation for EventHorizon: register, email verification, login, and a JWT-protected profile route."
+variables:
+  baseUrl: http://localhost:5000
+  authToken: ""
+  verificationToken: ""

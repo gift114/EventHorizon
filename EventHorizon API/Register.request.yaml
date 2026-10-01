@@ -1,0 +1,26 @@
+$kind: http-request
+description: Creates a new (unverified) user and emails a verification link containing a one-time token. Copy the token from that email's query string into the {{verificationToken}} collection variable, or paste it directly into the next request.
+url: "{{baseUrl}}/api/auth/register"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "name": "Ada Lovelace",
+      "email": "ada@example.com",
+      "password": "password123"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      // If your register flow ever returns a token directly (e.g. in dev mode),
+      // this will capture it automatically. Otherwise, copy the token from the
+      // verification email and set {{verificationToken}} manually.
+      const res = pm.response.json();
+      if (res && res.data && res.data.verificationToken) {
+          pm.collectionVariables.set('verificationToken', res.data.verificationToken);
+      }
+    language: text/javascript
+order: 2000
